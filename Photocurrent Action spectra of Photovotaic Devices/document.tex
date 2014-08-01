@@ -3,6 +3,7 @@
 \documentclass{article}
 \usepackage{graphicx}
 \usepackage{amsmath}
+\usepackage{color}
 \begin{document}
 \title{Photocurrent Action spectra of Photovotaic Devices}
 \maketitle
@@ -81,6 +82,50 @@ transmission coefficients are defined by
 {{t}_{jk}}=\frac{2{{q}_{j}}}{{{q}_{j}}+{{q}_{k}}}
 \end{equation}
 \end{subequations}
+and for light with the electric field parallel to the plane of
+incidence(p-polarized or TM waves) as
+\begin{subequations}
+\begin{equation}
+{{r}_{jk}}=\frac{\tilde{n}_{k}^{2}{{q}_{j}}-\tilde{n}_{j}^{2}{{q}_{k}}}{\tilde{n}_{k}^{2}{{q}_{j}}+\tilde{n}_{j}^{2}{{q}_{k}}}
+\end{equation}
+\begin{equation}
+{{t}_{jk}}=\frac{2{{{\tilde{n}}}_{j}}{{{\tilde{n}}}_{k}}{{q}_{j}}}{\tilde{n}_{k}^{2}{{q}_{j}}+\tilde{n}_{j}^{2}{{q}_{k}}}
+\end{equation}
+\end{subequations}
+where
+\begin{equation}
+{{q}_{j}}={{\tilde{n}}_{j}}\cos {{\phi }_{j}}={{[\tilde{n}_{j}^{2}-\eta
+_{0}^{2}\sin {{\phi }_{0}}]}^{1/2}}
+\end{equation}
+\subsubsection{IOEF(Internal Optical Electric Field) Class Reference}
+This class is written in Python 2.7.6, you can use this class to obtain internal
+optical electric field due to an oncident plane wave
+within the structure you defined in the class attributes.
+
+\textbf{Instance Attributes:(id, phi0, wavelength, TME)}
+
+\textcolor{blue}{id:} Define the Structure with a numpy.array Type.
+
+\textcolor{blue}{phi0:} Define the incidence angle.
+
+\textcolor{blue}{wavelength:} Define the wavelength.
+
+\textcolor{blue}{TME:} Define the plorization of light (TE or TM).
+
+\textbf{Method:}
+
+\textcolor{blue}{EFfunc(j,x):} Get the electric field distributon at x in layer
+j
+
+\textcolor{blue}{plotEFfunc(layer):}Plot the electric field distribution vs x in
+layer j
+
+
+
+
+
+
+
 
 
 
