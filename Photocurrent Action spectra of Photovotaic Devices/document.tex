@@ -97,6 +97,27 @@ where
 {{q}_{j}}={{\tilde{n}}_{j}}\cos {{\phi }_{j}}={{[\tilde{n}_{j}^{2}-\eta
 _{0}^{2}\sin {{\phi }_{0}}]}^{1/2}}
 \end{equation}
+
+Since the number of excitred state at a given position in a structure is
+directly dependent on the energy absorbed by the material, the energy
+dissipation of the electromagnetic field in the material is the quantity that is
+of interest in the case of photovoltaic devices. The time average of the energy
+dissipated per second in layer j at position x at normal incidence is given
+by(c, speed of light; ${{\varepsilon }_{0}}$, permittivity of free space)
+\begin{equation}
+{{Q}_{j}}(x)=\frac{1}{2}c{{\varepsilon }_{0}}{{\alpha }_{j}}{{\eta
+}_{j}}{{\left| {{E}_{j}}(x) \right|}^{2}}
+\end{equation}
+This means that the energy absorbed at position xin the layered structure is
+proportional to the product of the modulus squared of the electric field
+${{\left| {{E}_{j}}(x) \right|}^{2}}$, the refractive index ${{\eta }_{j}}$ and
+the absorption coefficient
+\begin{equation}
+{{\alpha }_{j}}=\frac{4\pi {{\kappa }_{j}}}{\lambda }
+\end{equation}
+at the actual positon x.
+
+
 \subsubsection{IOEF(Internal Optical Electric Field) Class Reference}
 This class is written in Python 2.7.6, you can use this class to obtain internal
 optical electric field due to an oncident plane wave
@@ -114,14 +135,31 @@ within the structure you defined in the class attributes.
 
 \textbf{Method:}
 
-\textcolor{blue}{EFfunc(j,x):} Get the electric field distributon at x in layer
+\textcolor{blue}{EFfunc(j,x):} Get the electric fi eld distributon at x in layer
 j
 
 \textcolor{blue}{plotEFfunc(layer):}Plot the electric field distribution vs x in
 layer j
+\subsubsection{photocurrent Class Reference}
+This class is a subclass of IOEF class, you can use this class to obtain the
+enrgy dissipation of the electromagnetic field in the material and the
+generated photocurrent at the active layer interface.
 
+\textbf{Instance Attributes:(id, phi0, wavelength, TME)}
 
-
+\subsubsection{Simulation Example}
+\begin{figure}[h!]
+  \centering
+    \includegraphics[width=1\textwidth]{electricfield}
+  \caption{Calculated distribution of the normalized modulus squared of the
+  optical electric field ${{\left| E \right|}^{2}}$(both TE and
+  TM,$\lambda$=500nm) inside active layer as shown in the
+  device(glass(semi-inifi,n=1.45)/active layer(t=100nm,n=1.8+0.2i)/bottom
+  layer(t=500nm,n=1.2)/air), which is schenatically presented in the right
+  corner.
+  }
+  \label{electricfield}
+\end{figure}
 
 
 
