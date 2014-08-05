@@ -9,7 +9,6 @@
 \maketitle
 \section{Internal Optical electric field and energy dissipation due to an incident plane wave
 }
-
 \subsection{Transfer Matrix Method:~\cite{pettersson1999modeling}}
 
 Stratified structures can be described by $2\times2$ matrix 
@@ -31,6 +30,8 @@ and a semi-infinite substrate as schematically described in Figure
  $\mathbf{E_{j}^{-}}$, respectively} \label{fig:layers} 
 \end{figure}
 \subsubsection{Theoretical Background}
+\textbf{Internal Optical Electric Field:}
+
 The electric field in layer j can be expressed in terms of the matrix elements
 of the partial system transfer matrices as
 
@@ -97,6 +98,7 @@ where
 {{q}_{j}}={{\tilde{n}}_{j}}\cos {{\phi }_{j}}={{[\tilde{n}_{j}^{2}-\eta
 _{0}^{2}\sin {{\phi }_{0}}]}^{1/2}}
 \end{equation}
+\textbf{Energy dissipation:}
 
 Since the number of excitred state at a given position in a structure is
 directly dependent on the energy absorbed by the material, the energy
@@ -135,17 +137,57 @@ within the structure you defined in the class attributes.
 
 \textbf{Method:}
 
-\textcolor{blue}{EFfunc(j,x):} Get the electric fi eld distributon at x in layer
+\textcolor{blue}{EFfunc(j,x):} Get the electric field distributon at x in layer
 j
 
 \textcolor{blue}{plotEFfunc(layer):}Plot the electric field distribution vs x in
 layer j
-\subsubsection{photocurrent Class Reference}
+\subsubsection{Photocurrent Class Reference}
 This class is a subclass of IOEF class, you can use this class to obtain the
 enrgy dissipation of the electromagnetic field in the material and the
 generated photocurrent at the active layer interface.
 
 \textbf{Instance Attributes:(id, phi0, wavelength, TME)}
+
+\textcolor{blue}{id:} Define the Structure with a numpy.array Type.
+
+\textcolor{blue}{phi0:} Define the incidence angle.
+
+\textcolor{blue}{wavelength:} Define the wavelength.
+
+\textcolor{blue}{TME:} Define the plorization of light (TE or TM).
+
+\textbf{Attributes:}
+
+\textcolor{blue}{$\theta1$:} The quantum efficiency of the exction
+generation(default value:1.0).
+
+\textcolor{blue}{$\theta2$:} The efficiency of the exction dissociation at the
+interface(default value:1.0).
+
+\textcolor{blue}{D:} The mean lifetime of the excition(default
+value:$2.9*10^{-10}$s).
+
+\textcolor{blue}{N:} Incident photon flux (default value:$2.365\times
+{{10}^{18}}(W/{{m}^{2}}\cdot s)$).
+
+\textcolor{blue}{dthickness:} Thickness of the activelayer(setting required).
+
+\textcolor{blue}{layer:} Which layer is the activelayer(setting required).
+
+\textbf{Method:}
+
+\textcolor{blue}{Qjfunc:} get the Energy dissipation of the electromagnetic
+field.
+
+\textcolor{blue}{JPhotonfunc0:} get the generated short-circuit photocurrent
+density at x=0.
+
+\textcolor{blue}{JPhotonfuncd:} get the generated short-circuit photocurrent
+density at x=dthickness.
+
+
+
 
 \subsubsection{Simulation Example}
 \begin{figure}[h!]
@@ -165,7 +207,8 @@ generated photocurrent at the active layer interface.
 
 
 
-
+\section{Exciton transport-diffusion equation
+}
 
 \subsection{Another subtitle}
 More plain text.
