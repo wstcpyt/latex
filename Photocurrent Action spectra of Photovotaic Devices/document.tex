@@ -3,6 +3,7 @@
 \documentclass{article}
 \usepackage{graphicx}
 \usepackage{amsmath}
+\usepackage{mathtools}
 \usepackage{color}
 \begin{document}
 \title{Photocurrent Action spectra of Photovotaic Devices}
@@ -165,8 +166,11 @@ generation(default value:1.0).
 \textcolor{blue}{$\theta2$:} The efficiency of the exction dissociation at the
 interface(default value:1.0).
 
-\textcolor{blue}{D:} The mean lifetime of the excition(default
-value:$2.9*10^{-10}$s).
+\textcolor{blue}{D:} The diffusion constant(default
+value:$18*10^{-8}$)
+
+\textcolor{blue}{t:} The mean lifetime of the excition(default
+value:$18*10^{-10}$s).
 
 \textcolor{blue}{N:} Incident photon flux (default value:$2.365\times
 {{10}^{18}}(W/{{m}^{2}}\cdot s)$).
@@ -186,8 +190,14 @@ density at x=0.
 \textcolor{blue}{JPhotonfuncd:} get the generated short-circuit photocurrent
 density at x=dthickness.
 
+\textcolor{blue}{JPhotonfuncd:} get the generated short-circuit photocurrent
+density at x=dthickness.
 
+\textcolor{blue}{ipce0:} get the incident monochromatic photon to current
+collection efficiency(no reflection) at x=0
 
+\textcolor{blue}{ipced:} get the incident monochromatic photon to current
+collection efficiency(no reflection) at x=dthickness.
 
 \subsubsection{Simulation Example}
 \begin{figure}[h!]
@@ -209,10 +219,110 @@ density at x=dthickness.
 
 \section{Exciton transport-diffusion equation
 }
+\subsection{Diffusion Equation Method~\cite{pettersson1999modeling}}
+\subsubsection{Theoretical Background}
+Consider photogenerated excitons formed by photoexcitation within an active
+layer. The excitons can diffuse from the position where they were created and
+be dissociated by interaction of the exciton at interfaces, impurities or
+defects. After the dissociation of the exciton, charge collection is possible.
+If n is the exciton density the diffusion equation gives
+\begin{equation}
+\frac{\partial n}{\partial t}=D\frac{{{\partial }^{2}}n}{\partial
+{{x}^{2}}}-\frac{n}{\tau }+\frac{{{\theta }_{1}}}{hv}Q(x)
+\label{diffusionequation} 
+\end{equation}
+where D is the diffusion constant,$\tau$ is the mean lifetime of the exciton,
+$\theta_1$ is the quantum efficiency of the exciton generation, and $hv$ is the
+excitation energy of the incident light. In Equation \ref{diffusionequation} the
+first term on the right represents excitons moving away by diffusion, the second
+term is a recombination term, and the third term represents the generation rate
+of excitons(photogeneration). At steady state (equilibrium), the exciton density
+is time independent and Equation \ref{diffusionequation} can be written as
+\begin{equation}
+\frac{{{d}^{2}}n}{d{{x}^{2}}}={{\beta }^{2}}n(x)-\frac{{{\theta
+}_{1}}}{Dhv}Q(x)
+\label{timeindependentdiffusionequation} 
+\end{equation}
+where $\beta =1/L=1/\sqrt{D\tau }$, i.e., the reciprocal of the diffusion length
+L. The general solution to Equation \ref{timeindependentdiffusionequation} with
+the generation terms given by the normal incidence case is
+\begin{equation}
+\begin{multlined}
+   {{Q}_{j}}(x)={{\alpha }_{j}}{{T}_{j}}{{I}_{0}}[{{e}^{-{{\alpha }_{j}}x}}+\rho _{j}^{''2}\cdot {{e}^{-{{\alpha }_{j}}(2{{d}_{j}}-x)}}+2\rho _{j}^{''}\cdot {{e}^{-{{\alpha }_{j}}{{d}_{j}}}} \\ 
+  \cdot \cos \left( \frac{4\pi \eta }{\lambda }({{d}_{j}}-x)+\delta _{j}^{''} \right)]  
+\end{multlined}
+\end{equation}
 
-\subsection{Another subtitle}
-More plain text.
-
+\begin{equation}
+\begin{multlined}
+   n(x)=\frac{{{\theta }_{1}}\alpha TN}{D({{\beta }^{2}}-{{\alpha }^{2}})}[A\cdot {{e}^{-\beta x}}+B\cdot {{e}^{\beta x}}+{{e}^{-\alpha x}}+{{C}_{1}}{{e}^{\alpha x}} \\ 
+  +{{C}_{2}}\cdot \cos \left( \frac{4\pi \eta }{\lambda }({{d}_{j}}-x)+\delta _{j}^{''} \right)] \\ 
+\end{multlined}
+\label{exctiondensity}
+\end{equation}
+where N is the number of incident photons at the device per unit time per unit
+area (incident photon flux).$I_0$ is the intensity of the incident
+light,${{T}_{j}}=\left( {{\eta }_{j}}/{{\eta }_{0}} \right){{\left| t_{j}^{+}
+\right|}^{2}}$ is the internal intensity transmittance, and $\rho _{j}^{''}$ and
+$\delta _{j}^{''}$ are the absolute value and theargument of the complex
+reflection coefficnent given by Equation \ref{rpp} , A and B are constants given
+by the boundary condition in the model and
+\begin{equation}
+r_{j}^{'}=\frac{S_{j21}^{'}}{S_{j11}^{'}}
+\end{equation}
+\begin{equation}
+t_{j}^{'}=\frac{1}{S_{j11}^{'}}
+\end{equation}
+\begin{equation}
+r_{j}^{''}=\frac{S_{j21}^{''}}{S_{j11}^{''}}
+\label{rpp}
+\end{equation}
+\begin{equation}
+t_{j}^{''}=\frac{1}{S_{j11}^{''}}
+\end{equation}
+\begin{equation}
+t_{j}^{''}=\frac{1}{S_{j11}^{''}}
+\end{equation}
+\begin{equation}
+r_{{{j}^{-}}}^{'}=-S_{j12}^{'}/S_{j11}^{'}
+\end{equation}
+\begin{equation}
+t_{j}^{+}=\frac{t_{j}^{'}}{1-r_{{{j}^{-}}}^{'}r_{j}^{''}\cdot {{e}^{i2{{\xi
+}_{j}}{{d}_{j}}}}}
+\end{equation}
+\begin{equation}
+{{C}_{1}}={{\rho }^{''2}}{{e}^{-2\alpha d}}
+\end{equation}
+\begin{equation}
+{{C}_{2}}=\frac{({{\beta }^{2}}-{{\alpha }^{2}})}{({{\beta }^{2}}+{{(4\pi \eta /\lambda )}^{2}})}2{{\rho }^{''}}{{e}^{-\alpha d}}
+\end{equation}
+Assuming that the interface of the activelayer act as perfect sinks for the
+excitons, i.e., all excitons can either recombine or dissociate into free
+charges at the interfaces resulting in boundary condition n=0 at x=0 and x=d.
+Solving for the two constant A and B using these boundary conditions together
+with Equation \ref{exctiondensity}, the result becomes
+\begin{equation}
+A=\frac{({{e}^{\beta d}}-{{e}^{-\alpha d}})+{{C}_{1}}({{e}^{\beta
+d}}-{{e}^{\alpha d}})+{{C}_{2}}\left[ {{e}^{\beta d}}\cdot \cos \left( \frac{4\pi \eta }{\lambda }d+{{\delta }^{''}} \right)-\cos ({{\delta }^{''}}) \right]}{({{e}^{-\beta d}}-{{e}^{\beta d}})}
+\end{equation}
+and
+\begin{equation}
+B=-\frac{({{e}^{-\beta d}}-{{e}^{-\alpha d}})+{{C}_{1}}({{e}^{-\beta
+d}}-{{e}^{\alpha d}})+{{C}_{2}}\left[ {{e}^{-\beta d}}\cdot \cos \left( \frac{4\pi \eta }{\lambda }d+{{\delta }^{''}} \right)-\cos ({{\delta }^{''}}) \right]}{({{e}^{-\beta d}}-{{e}^{\beta d}})}
+\end{equation}
+The short-circuit exctiton current density at the interface x=0 can be found as
+\begin{equation}
+{{J}_{Exc}}={{\left. D\frac{dn}{dx} \right|}_{x=0}}
+\end{equation}
+which is related to the short-circuit photocurrent through
+${{J}_{Photon}}=q{{\theta }_{2}}{{J}_{Exc}}$, where q is the electron charge and
+$\theta_2$ is the efficiency of the exciton dissociation at the interface. The
+resulting short-circuit photocurrent density generated at this interface
+therefore is 
+\begin{equation}
+{{\left. {{J}_{Photon}} \right|}_{x=0}}=\frac{q\theta \alpha TN}{({{\beta
+}^{2}}-{{\alpha }^{2}})}\left( -\beta A+\beta B-\alpha +\alpha {{C}_{1}}+\frac{4\pi \eta }{\lambda }{{C}_{2}}\cdot \sin \left[ \frac{4\pi \eta }{\lambda }d+{{\delta }^{''}} \right] \right)
+\end{equation}
 \bibliography{mybib}{}
 \bibliographystyle{plain}
 \end{document}
