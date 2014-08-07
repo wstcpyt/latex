@@ -322,7 +322,70 @@ therefore is
 \begin{equation}
 {{\left. {{J}_{Photon}} \right|}_{x=0}}=\frac{q\theta \alpha TN}{({{\beta
 }^{2}}-{{\alpha }^{2}})}\left( -\beta A+\beta B-\alpha +\alpha {{C}_{1}}+\frac{4\pi \eta }{\lambda }{{C}_{2}}\cdot \sin \left[ \frac{4\pi \eta }{\lambda }d+{{\delta }^{''}} \right] \right)
+\label{photocurrent0}
 \end{equation}
+where the total quantum efficiency of the free charge generation is defined as
+$\theta=\theta_1\theta_2$. In the same way for interface x=d the shord-circuit
+exciton current density can be dound as 
+\begin{equation}
+{{J}_{Exc}}=-D{{\left. \frac{dn}{dx} \right|}_{x=d}}
+\end{equation}
+resulting with the generated short-circuit photocurrent density as 
+\begin{equation}
+{{\left. {{J}_{Photo}} \right|}_{x=d}}=\frac{q\theta \alpha TN}{({{\beta
+}^{2}}-{{\alpha }^{2}})}\left( \beta A\cdot {{e}^{-\beta d}}-\beta B\cdot {{e}^{\beta d}}+\alpha \cdot {{e}^{-\alpha d}}-\alpha {{C}_{1}}\cdot {{e}^{\alpha d}}-\frac{4\pi \eta }{\lambda }{{C}_{2}}\cdot \sin [{{\delta }^{''}}] \right)
+\label{photocurrentd}
+\end{equation}
+From Equation \ref{photocurrent0} and \ref{photocurrentd} it is seen that the
+generated photocurrent is directly proportional to the intensity of the incidnet
+light at the photovoltaic device, since the intgensity of the incident light,
+$I_0$, is related to the incident photon flux through, $I_0=hvN$.
+
+The efficiency of a photovoltaic device can be described by the incident
+monochromatic photon to current collection effecienvy(IPCE), which give us the
+ratio between the number of generated charge carriers contributing to the
+photocurrent and the number of incident photons. The IPCE, in percednt is given
+as
+\begin{equation}
+IPCE(\%)=1240\times \frac{{{J}_{Photo}}}{\lambda {{I}_{0}}}
+\end{equation}
+where $J_{Photo}$ is the short-cirtuit current ($\mu A/c{{m}^{2}}$), $I_0$ and
+$\lambda$ are the intensity ($W/m^2$) and the wavelength (nm), respectively, of
+the incident light.
+
+\subsubsection{Simulation Example}
+The device I investigate is shown in Figure \ref{electricfield}.
+\begin{figure}[h!]
+  \centering
+    \includegraphics[width=1\textwidth]{complexindex}
+  \caption{
+  Complex index of refraction $\tilde{n}=\eta +i\kappa$ of the active layer in
+  the simulation in the wavelength range 300-1000nm(1.24-5.00eV) }
+  \label{complexindex}
+\end{figure}
+\begin{figure}[h!]
+  \centering
+    \includegraphics[width=1\textwidth]{AM15}
+  \caption{
+ASTM G173-03 Reference Spectra (Global
+tilt)(http://rredc.nrel.gov/solar/spectra/am1.5/ASTMG173/ASTMG173.html) }
+  \label{AM15}
+\end{figure}
+\begin{figure}[h!]
+  \centering
+    \includegraphics[width=1\textwidth]{Jphton0d}
+  \caption{Calculated incident monochromatic photon to photocurrent
+  spectrum(Wieghted over AM1.5),both for x=0 and x=d in the active layer }
+  \label{Jphton0d}
+\end{figure}
+\begin{figure}[h!]
+  \centering
+    \includegraphics[width=1\textwidth]{IPCE}
+  \caption{Calculated incident monochromatic photon to current collection
+  efficiency, IPCE, action spectra, both for x=0 and x=d in the active layer }
+  \label{IPCE}
+\end{figure}
+
 \bibliography{mybib}{}
 \bibliographystyle{plain}
 \end{document}
